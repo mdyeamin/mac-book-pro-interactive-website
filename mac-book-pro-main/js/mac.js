@@ -14,13 +14,22 @@ const extraMemoryCost = document.getElementById('extra-memory-cost');
 const extraStorageCost = document.getElementById('extra-storage-cost');
 const deliveryCharge = document.getElementById('delivery-charge');
 const totalPrice = document.getElementById('total-price');
+// pomo filed
+const pomoFiled = document.getElementById('pomo-filed');
+const applyPomo = document.getElementById('button-addon2');
+
 //pomo discount
 const grandTotal = document.getElementById('grand-total');
 
 
 
+// total price
+function totalCost() {
+    const totalCalculation = parseInt(bestPrice.innerText) + parseInt(extraMemoryCost.innerText) + parseInt(extraStorageCost.innerText) + parseInt(deliveryCharge.innerText);
+    totalPrice.innerText = totalCalculation;
+    grandTotal.innerText = totalCalculation;
 
-
+}
 
 
 
@@ -28,31 +37,45 @@ const grandTotal = document.getElementById('grand-total');
 
 // get ram event 
 memory8BG.addEventListener('click', function () {
+    const getextraMemoryPrice = extraMemoryCost.innerText = '0';
+    totalCost()
+    return getextraMemoryPrice;
 
 })
 
 memory16BG.addEventListener('click', function () {
+    const getextraMemoryPrice = extraMemoryCost.innerText = '180';
+    totalCost()
+    return getextraMemoryPrice;
 
 })
-
 // get storage event 
 storage256GB.addEventListener('click', function () {
-
+    const getextraStoragePrice = extraStorageCost.innerText = '0';
+    totalCost()
+    return getextraStoragePrice;
 })
 storage512GB.addEventListener('click', function () {
-
+    const getextraStoragePrice = extraStorageCost.innerText = '100';
+    totalCost()
+    return getextraStoragePrice;
 })
 storage1TB.addEventListener('click', function () {
-
-
+    const getextraStoragePrice = extraStorageCost.innerText = '180';
+    totalCost()
+    return getextraStoragePrice;
 })
 //delivery event
 freeDelivery.addEventListener('click', function () {
-    console.log('1');
+    const getFreeDelivery = deliveryCharge.innerText = '0';
+    totalCost()
+    return getFreeDelivery
 });
 expressDelivery.addEventListener('click', function () {
-    console.log('2');
+    const getFreeDelivery = deliveryCharge.innerText = '20';
+    totalCost()
+    return getFreeDelivery
 });
-
+// pomo
 
 
