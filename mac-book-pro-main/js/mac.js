@@ -1,3 +1,6 @@
+
+
+
 //get  ram
 const memory8BG = document.getElementById('mamory-8GB');
 const memory16BG = document.getElementById('mamory-16GB');
@@ -15,25 +18,16 @@ const extraStorageCost = document.getElementById('extra-storage-cost');
 const deliveryCharge = document.getElementById('delivery-charge');
 const totalPrice = document.getElementById('total-price');
 // pomo filed
-const pomoFiled = document.getElementById('pomo-filed');
-const applyPomo = document.getElementById('button-addon2');
-
-//pomo discount
 const grandTotal = document.getElementById('grand-total');
 
-
+//pomo discount
 
 // total price
 function totalCost() {
     const totalCalculation = parseInt(bestPrice.innerText) + parseInt(extraMemoryCost.innerText) + parseInt(extraStorageCost.innerText) + parseInt(deliveryCharge.innerText);
     totalPrice.innerText = totalCalculation;
     grandTotal.innerText = totalCalculation;
-
 }
-
-
-
-
 
 // get ram event 
 memory8BG.addEventListener('click', function () {
@@ -78,4 +72,14 @@ expressDelivery.addEventListener('click', function () {
 });
 // pomo
 
+document.getElementById('button-addon2').addEventListener('click', function () {
+    const pomoFiled = document.getElementById('pomo-filed');
+    if (pomoFiled.value == 'stevekaku') {
+        const grandTotal = document.getElementById('grand-total');
+        const finalFrandTotal = grandTotal.innerText * 20 / 100;
+        grandTotal.innerText = grandTotal.innerText - finalFrandTotal;
+
+    }
+    pomoFiled.value = '';
+})
 
