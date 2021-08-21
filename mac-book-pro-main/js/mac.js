@@ -1,74 +1,46 @@
 
-
-
-//get  ram
-const memory8BG = document.getElementById('mamory-8GB');
-const memory16BG = document.getElementById('mamory-16GB');
-//get storage
-const storage256GB = document.getElementById('storage-256GB');
-const storage512GB = document.getElementById('storage-512GB');
-const storage1TB = document.getElementById('storage-1TB');
-// Choose youe delivery option
-const freeDelivery = document.getElementById('free-delivery');
-const expressDelivery = document.getElementById('express-delivery');
-// amount quantuty
-const bestPrice = document.getElementById('best-price');
-const extraMemoryCost = document.getElementById('extra-memory-cost');
-const extraStorageCost = document.getElementById('extra-storage-cost');
-const deliveryCharge = document.getElementById('delivery-charge');
-const totalPrice = document.getElementById('total-price');
-// pomo filed
-const grandTotal = document.getElementById('grand-total');
-
-//pomo discount
-
-// total price
+function getProductPrice(item, price) {
+    const macItem = document.getElementById(item);
+    macItem.innerText = price;
+    totalCost()
+}
 function totalCost() {
-    const totalCalculation = parseInt(bestPrice.innerText) + parseInt(extraMemoryCost.innerText) + parseInt(extraStorageCost.innerText) + parseInt(deliveryCharge.innerText);
-    totalPrice.innerText = totalCalculation;
-    grandTotal.innerText = totalCalculation;
+    const bestPrice = document.getElementById('best-price').innerText;
+    const extraMemoryCost = document.getElementById('extra-memory-cost').innerText;
+    const extraStorageCost = document.getElementById('extra-storage-cost').innerText;
+    const deliveryCharge = document.getElementById('delivery-charge').innerText;
+
+
+    const totalCalculation = parseInt(bestPrice) + parseInt(extraMemoryCost) + parseInt(extraStorageCost) + parseInt(deliveryCharge);
+    document.getElementById('total-price').innerText = totalCalculation;
+    document.getElementById('grand-total').innerText = totalCalculation;
 }
 
-// get ram event 
-memory8BG.addEventListener('click', function () {
-    const getextraMemoryPrice = extraMemoryCost.innerText = '0';
-    totalCost()
-    return getextraMemoryPrice;
 
+const memory8BG = document.getElementById('mamory-8GB').addEventListener('click', function () {
+    getProductPrice('extra-memory-cost', 0)
 })
 
-memory16BG.addEventListener('click', function () {
-    const getextraMemoryPrice = extraMemoryCost.innerText = '180';
-    totalCost()
-    return getextraMemoryPrice;
-
+const memory16BG = document.getElementById('mamory-16GB').addEventListener('click', function () {
+    getProductPrice('extra-memory-cost', 180)
 })
 // get storage event 
-storage256GB.addEventListener('click', function () {
-    const getextraStoragePrice = extraStorageCost.innerText = '0';
-    totalCost()
-    return getextraStoragePrice;
+const storage256GB = document.getElementById('storage-256GB').addEventListener('click', function () {
+    getProductPrice('extra-storage-cost', 0)
 })
-storage512GB.addEventListener('click', function () {
-    const getextraStoragePrice = extraStorageCost.innerText = '100';
-    totalCost()
-    return getextraStoragePrice;
+
+const storage512GB = document.getElementById('storage-512GB').addEventListener('click', function () {
+    getProductPrice('extra-storage-cost', 100)
 })
-storage1TB.addEventListener('click', function () {
-    const getextraStoragePrice = extraStorageCost.innerText = '180';
-    totalCost()
-    return getextraStoragePrice;
+const storage1TB = document.getElementById('storage-1TB').addEventListener('click', function () {
+    getProductPrice('extra-storage-cost', 180)
 })
 //delivery event
-freeDelivery.addEventListener('click', function () {
-    const getFreeDelivery = deliveryCharge.innerText = '0';
-    totalCost()
-    return getFreeDelivery
+const freeDelivery = document.getElementById('free-delivery').addEventListener('click', function () {
+    getProductPrice('delivery-charge', 0)
 });
-expressDelivery.addEventListener('click', function () {
-    const getFreeDelivery = deliveryCharge.innerText = '20';
-    totalCost()
-    return getFreeDelivery
+const expressDelivery = document.getElementById('express-delivery').addEventListener('click', function () {
+    getProductPrice('delivery-charge', 20)
 });
 // pomo
 
@@ -78,7 +50,6 @@ document.getElementById('button-addon2').addEventListener('click', function () {
         const grandTotal = document.getElementById('grand-total');
         const finalFrandTotal = grandTotal.innerText * 20 / 100;
         grandTotal.innerText = grandTotal.innerText - finalFrandTotal;
-
     }
     pomoFiled.value = '';
 })
